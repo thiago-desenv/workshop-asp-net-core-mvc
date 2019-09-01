@@ -27,14 +27,14 @@ namespace SalesWebMvc.Controllers
         // GET: Departments/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if(department == null)
             {
                 return NotFound();
             }
@@ -55,7 +55,7 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Department department)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _context.Add(department);
                 await _context.SaveChangesAsync();
@@ -67,13 +67,13 @@ namespace SalesWebMvc.Controllers
         // GET: Departments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var department = await _context.Department.FindAsync(id);
-            if (department == null)
+            if(department == null)
             {
                 return NotFound();
             }
@@ -87,21 +87,21 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Department department)
         {
-            if (id != department.Id)
+            if(id != department.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(department);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch(DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
+                    if(!DepartmentExists(department.Id))
                     {
                         return NotFound();
                     }
@@ -118,14 +118,14 @@ namespace SalesWebMvc.Controllers
         // GET: Departments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if(department == null)
             {
                 return NotFound();
             }
